@@ -1,3 +1,4 @@
+game.StarterGui:SetCore("SendNotification", {Title = "LuxScript";Text = "Camera Locked Down";Icon = "rbxassetid://3354469513";Duration = 12;})
 local RunService = game:GetService("RunService")
 local camera = workspace.CurrentCamera
 local player = game.Players.LocalPlayer
@@ -11,4 +12,3 @@ local function onRenderStep()
     end
 end
 RunService:BindToRenderStep("Camera", Enum.RenderPriority.Camera.Value, onRenderStep)
-print("test")
