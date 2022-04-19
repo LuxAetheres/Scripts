@@ -11,3 +11,4 @@ local function onRenderStep()
     end
 end
 RunService:BindToRenderStep("Camera", Enum.RenderPriority.Camera.Value, onRenderStep)
+print("test")
