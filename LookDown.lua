@@ -1,4 +1,4 @@
-game.StarterGui:SetCore("SendNotification", {Title = "LuxScript";Text = "Camera Locked Down";Icon = "rbxassetid://3354469513";Duration = 12;})
+game.StarterGui:SetCore("SendNotification", {Title = "LuxScript";Text = "Camera Locked Down";Icon = "rbxassetid://3354469513";Duration = 5;})
 local RunService = game:GetService("RunService")
 local camera = workspace.CurrentCamera
 local player = game.Players.LocalPlayer
