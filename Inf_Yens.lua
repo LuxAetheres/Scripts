@@ -17,17 +17,17 @@ end
 local function sspin()
     for i = 1,3 do
         task.spawn(function()
-            lspin(1000)
+            lspin(_G.Spin)
         end)
     end
 end
 local function totalspin()
     for i = 1,3 do
-        for i = 1,2 do
+        for i = 1,_G.Loop do
             task.spawn(function()
                 sspin()
             end)
-            wait(10)
+            wait(_G.Wait)
         end
     end
 end
