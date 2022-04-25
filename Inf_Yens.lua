@@ -1,4 +1,5 @@
 local function suppresslag()
+    game:GetService("Players").LocalPlayer.PlayerGui.Main.Notifs.Visible = false
     game:GetService("Workspace").MouseIgnore:remove()
     print("Chest Entity Removed")
 end
