@@ -1,3 +1,4 @@
+print("start")
 if game:IsLoaded() == true then
     local vu = game:service'VirtualUser'
 
