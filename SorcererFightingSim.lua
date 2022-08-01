@@ -5,6 +5,18 @@ if game:IsLoaded() == true then
     game:service'Players'.LocalPlayer.Idled:connect(function()
         vu:CaptureController()
         vu:ClickButton2(Vector2.new())
+        game.StarterGui:SetCore("ChatMakeSystemMessage", {
+            Text = "[Anti-AFK]";
+            Color = Color3.new(255, 0, 0);
+        }) 
+    end)
+
+    pcall(function() 
+        game.StarterGui:SetCore("ChatMakeSystemMessage", {
+            Text = "[Anti-AFK]";
+            Color = Color3.new(255, 0, 0);
+        }) 
+    end)
 end
 
 game.Loaded:Connect(function()
@@ -13,6 +25,18 @@ game.Loaded:Connect(function()
     game:service'Players'.LocalPlayer.Idled:connect(function()
         vu:CaptureController()
         vu:ClickButton2(Vector2.new())
+        game.StarterGui:SetCore("ChatMakeSystemMessage", {
+            Text = "[Anti-AFK]";
+            Color = Color3.new(255, 0, 0);
+        }) 
+    end)
+
+    pcall(function() 
+        game.StarterGui:SetCore("ChatMakeSystemMessage", {
+            Text = "[Anti-AFK]";
+            Color = Color3.new(255, 0, 0);
+        })  
+    end)
 end)
 
 
