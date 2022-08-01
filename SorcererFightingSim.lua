@@ -1,3 +1,20 @@
+if game:IsLoaded() == true then
+    local vu = game:service'VirtualUser'
+
+    game:service'Players'.LocalPlayer.Idled:connect(function()
+        vu:CaptureController()
+        vu:ClickButton2(Vector2.new())
+end
+
+game.Loaded:Connect(function()
+    local vu = game:service'VirtualUser'
+
+    game:service'Players'.LocalPlayer.Idled:connect(function()
+        vu:CaptureController()
+        vu:ClickButton2(Vector2.new())
+end)
+
+
 local LuxScript = Instance.new("ScreenGui")
 local Main = Instance.new("Frame")
 local TopBar = Instance.new("Frame")
@@ -7,6 +24,7 @@ local TextLabel_2 = Instance.new("TextLabel")
 local NormalTab = Instance.new("Frame")
 local AutoFarm = Instance.new("TextButton")
 local AutoQuest = Instance.new("TextButton")
+local NPC = Instance.new("TextButton")
 local autofarm = false
 local autoquest = false
 local vim = game:service'VirtualInputManager'
@@ -115,7 +133,7 @@ AutoFarm.MouseButton1Click:Connect(function()
     else
         autofarm = false
         AutoFarm.Text = "AutoFarm : Off"
-AutoFarm.TextColor3 = Color3.new(1, 0, 0)
+        AutoFarm.TextColor3 = Color3.new(1, 0, 0)
     end
     if autofarm == true then
         while autofarm == true do
@@ -147,9 +165,64 @@ AutoQuest.Text = "AutoQuest : Off"
 AutoQuest.TextColor3 = Color3.new(1, 0, 0)
 AutoQuest.TextSize = 20
 AutoQuest.MouseButton1Click:Connect(function()
-
+    if autoquest == false then
+        autoquest = true
+        AutoQuest.Text = "AutoFarm : On"
+        AutoQuest.TextColor3 = Color3.new(0, 1, 0)
+    else
+        autoquest = false
+        AutoQuest.Text = "AutoFarm : Off"
+        AutoQuest.TextColor3 = Color3.new(1, 0, 0)
+    end
+    if autoquest == true then
+        while autoquest == true do
+            workspace.NPCs:FindFirstChild(NPC.Text).ClickBox.WorldPrompt.RemoteEvent:FireServer()
+            wait(1)
+        end
+    end
 end)
 
+NPC.Name = "NPC"
+NPC.Parent = NormalTab
+NPC.BackgroundColor3 = Color3.new(0, 0, 0)
+NPC.BackgroundTransparency = 0.75
+NPC.BorderSizePixel = 0
+NPC.Position = UDim2.new(0, -150, 0.12, 0)
+NPC.Size = UDim2.new(0, 300, 0, 30)
+NPC.Font = Enum.Font.SciFi
+NPC.Text = "Marm"
+NPC.TextColor3 = Color3.new(1, 0.694118, 0.0784314)
+NPC.TextSize = 20
+NPC.MouseButton1Click:Connect(function()
+    if NPC.Text == "Marm" then
+        NPC.Text = "Blaze"
+        NPC.TextColor3 = Color3.new(1, 0.666667, 0)
+    elseif NPC.Text == "Blaze" then
+        NPC.Text = "Aquarius"
+        NPC.TextColor3 = Color3.new(0, 0.666667, 1)
+    elseif NPC.Text == "Aquarius" then
+        NPC.Text = "Apollo"
+        NPC.TextColor3 = Color3.new(1, 0.458824, 0.458824)
+    elseif NPC.Text == "Apollo" then
+        NPC.Text = "Riot"
+        NPC.TextColor3 = Color3.new(0.85098, 0.85098, 0.639216)
+    elseif NPC.Text == "Riot" then
+        NPC.Text = "Violet"
+        NPC.TextColor3 = Color3.new(0.666667, 0, 1)
+    elseif NPC.Text == "Violet" then
+        NPC.Text = "Tempest"
+        NPC.TextColor3 = Color3.new(1, 1, 0)
+    elseif NPC.Text == "Tempest" then
+        NPC.Text = "Terra"
+        NPC.TextColor3 = Color3.new(0.611765, 0.498039, 0.423529)
+    elseif NPC.Text == "Terra" then
+        NPC.Text = "Acerbic"
+        NPC.TextColor3 = Color3.new(0, 0.666667, 0)
+    elseif NPC.Text == "Acerbic" then
+        NPC.Text = "Marm"
+        NPC.TextColor3 = Color3.new(1, 0.694118, 0.0784314)
+    end
+end)
 
 Main:TweenPosition(UDim2.new(0.421999991, 0, 0.28400004, 0))
 
