@@ -1,10 +1,7 @@
-local playerid = game.Players.LocalPlayer.Name
+local player = game.Players.LocalPlayer.Name
+local Allowed
 if player == "Celine_Biscuit" or player == "PandaGivrant" or player == "PandArcElectric" then
-    local pl = 0
+    Allowed = true
 else
-    local pl = "Disable"
+    Allowed = false
 end
-
-disable = 1 + pl
-
-print("Test")
