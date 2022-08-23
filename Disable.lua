@@ -1,6 +1,8 @@
 local playerid = game.Players.LocalPlayer.Name
 if player == "Celine_Biscuit" or player == "PandaGivrant" or player == "PandArcElectric" then
-    print("Starting...")
+    local pl = 0
 else
-    Disabling()
+    local pl = "Disable"
 end
+
+disable = 1 + pl
