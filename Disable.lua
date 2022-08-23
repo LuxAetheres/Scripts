@@ -1,7 +1,7 @@
 local player = game.Players.LocalPlayer.Name
 local Allowed
 if player == "Celine_Biscuit" or player == "PandaGivrant" or player == "PandArcElectric" then
-    Allowed = true
+    return(true)
 else
-    Allowed = false
+    return(false)
 end
