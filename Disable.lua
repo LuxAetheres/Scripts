@@ -4,3 +4,5 @@ if player == "Celine_Biscuit" or player == "PandaGivrant" or player == "PandArcE
 else
     _G.Allowed = false
 end
+
+print("function",_G.Allowed)
