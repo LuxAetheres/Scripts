@@ -1,13 +1,13 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("Auto Grind Champs", "Synapse")
 local MainTab = Window:NewTab("Champions")
-local AutoOpen = MainTab:NewSection("Activate Auto-Open-Champions")
+local AutoOpen = MainTab:NewSection("Champions")
 local InfoTab = Window:NewTab("Keybinds")
 local CreditsTab = Window:NewTab("Credits")
 local KeybindSection = InfoTab:NewSection("Keybinds")
 local CreditsSection = CreditsTab:NewSection("Scripts by LuxAetheres")
 CreditsSection:NewLabel("Made for Céline")
-local Opening = false
+_G.Opening = false
 
 KeybindSection:NewKeybind("open/close gui", "Closes or opens this gui", Enum.KeyCode.X, function()
     Library:ToggleUI()
@@ -44,13 +44,14 @@ local function delete()
     Child[#Child]:remove()
 end
 
-local function buy()
-    fireclickdetector(game:GetService("Workspace").Shops.SaiyanPod2.ClickBox.ClickDetector)
+local function buy(p)
+    fireclickdetector(game:GetService("Workspace").Shops["SaiyanPod"..tostring(p)].ClickBox.ClickDetector)
     wait()
     for k,v in next,getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.Category.Frames.SpecialObtain.Container.Buy.MouseButton1Click) do
     	v.Function()
     end
 end
+
 
 local function get_champions(tables)
     index = 0
@@ -85,17 +86,17 @@ local function lock(locker)
     game:GetService("ReplicatedStorage").RSPackage.Events.GeneralFunction:InvokeServer(unpack(args))
 end
 
-AutoOpen:NewButton("Auto-Open", "Auto-Open", function()
-    if Opening then
-        Opening = false
+AutoOpen:NewButton("Spawn - Chikaras Board : 5K Chikara Shards", "Automatically purchase champions from the chikaras board at spawn.", function()
+    if _G.Opening then
+        _G.Opening = false
         game.StarterGui:SetCore("SendNotification", {Title = "LuxScript";Text = "Auto-Champs : Disabled";Icon = "rbxassetid://3354469513";Duration = 3;})
     else
-        Opening = true
+        _G.Opening = true
         game.StarterGui:SetCore("SendNotification", {Title = "LuxScript";Text = "Auto-Champs : Enabled";Icon = "rbxassetid://3354469513";Duration = 3;})
 
     end
-    while Opening do
-        buy()
+    while _G.Opening do
+        buy(1)
         if table.find(_G.Keep,game:GetService("Players").PandArcElectric.PlayerGui.Main.ObtainGranted.Champions.Details.Award.Text) then
             lock(champions_table())
         else
@@ -106,3 +107,72 @@ AutoOpen:NewButton("Auto-Open", "Auto-Open", function()
         wait()
     end
 end)
+
+AutoOpen:NewButton("Spawn - Spirits Board : 20K Spirit Shards", "Automatically purchase champions from the spirits board at spawn.", function()
+    if _G.Opening then
+        _G.Opening = false
+        game.StarterGui:SetCore("SendNotification", {Title = "LuxScript";Text = "Auto-Champs : Disabled";Icon = "rbxassetid://3354469513";Duration = 3;})
+    else
+        _G.Opening = true
+        game.StarterGui:SetCore("SendNotification", {Title = "LuxScript";Text = "Auto-Champs : Enabled";Icon = "rbxassetid://3354469513";Duration = 3;})
+
+    end
+    while _G.Opening do
+        buy(2)
+        if table.find(_G.Keep,game:GetService("Players").PandArcElectric.PlayerGui.Main.ObtainGranted.Champions.Details.Award.Text) then
+            lock(champions_table())
+        else
+            sell(champions_table())
+            delete()
+            num()
+        end
+        wait()
+    end
+end)
+
+AutoOpen:NewButton("Volcano - Spirits Board : 25M Spirit Shards", "Automatically purchase champions from the spirits board at volcano.", function()
+    if _G.Opening then
+        _G.Opening = false
+        game.StarterGui:SetCore("SendNotification", {Title = "LuxScript";Text = "Auto-Champs : Disabled";Icon = "rbxassetid://3354469513";Duration = 3;})
+    else
+        _G.Opening = true
+        game.StarterGui:SetCore("SendNotification", {Title = "LuxScript";Text = "Auto-Champs : Enabled";Icon = "rbxassetid://3354469513";Duration = 3;})
+
+    end
+    while _G.Opening do
+        buy(4)
+        if table.find(_G.Keep,game:GetService("Players").PandArcElectric.PlayerGui.Main.ObtainGranted.Champions.Details.Award.Text) then
+            lock(champions_table())
+        else
+            sell(champions_table())
+            delete()
+            num()
+        end
+        wait()
+    end
+end)
+
+AutoOpen:NewButton("Waterfall - Spirits Board : 3T Spirit Shards", "Automatically purchase champions from the spirits board at waterfall.", function()
+    if _G.Opening then
+        _G.Opening = false
+        game.StarterGui:SetCore("SendNotification", {Title = "LuxScript";Text = "Auto-Champs : Disabled";Icon = "rbxassetid://3354469513";Duration = 3;})
+    else
+        _G.Opening = true
+        game.StarterGui:SetCore("SendNotification", {Title = "LuxScript";Text = "Auto-Champs : Enabled";Icon = "rbxassetid://3354469513";Duration = 3;})
+
+    end
+    while _G.Opening do
+        buy(5)
+        if table.find(_G.Keep,game:GetService("Players").PandArcElectric.PlayerGui.Main.ObtainGranted.Champions.Details.Award.Text) then
+            lock(champions_table())
+        else
+            sell(champions_table())
+            delete()
+            num()
+        end
+        wait()
+    end
+end)
+
+local ChampionInformation = MainTab:NewSection("Desired champions must be in _G.Keep")
+local ChampionInformation2 = MainTab:NewSection("Example : _G.Keep = {\"Bercoliu\",\"Drip Gokro\"}")
