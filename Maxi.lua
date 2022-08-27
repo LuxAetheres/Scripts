@@ -17,5 +17,5 @@ local function maxi()
         end
     end
     l = game.Players.localPlayer.PlayerGui.Main.Category.Frames.Champions.Container.List:GetChildren()
-    return maxi
+    return tonumber(maxi)
 end
